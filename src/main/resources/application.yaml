@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: secondprojectmbemx
+
+    datasource:
+      url: ${DB_URL:jdbc:postgresql://localhost:5432/taskflow}
+      username: ${DB_USER:secondprojectmbemx}
+      password: ${DB_PASSWORD:secondprojectmbemx}
+      jpa:
+        hibernate:
+          ddl-auto: update
+        open-in-view: false
+      mvc:
+        problemdetails:
+          enabled: true
+
+    server:
+      port: 8080
+
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: health,info
+      endpoint:
+        health:
+          probes:
+            enabled: true
+
+    app:
+      version: ${APP_VERSION:dev}
